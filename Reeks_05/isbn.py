@@ -17,10 +17,7 @@ def isISBN(code):
     try:
         x10 = sum([int(code[i]) * (i + 1) for i in range(len(code) - 1)]) % 11
         x10t = 10 if code[9] == 'X' else int(code[9])
-        if x10 == x10t:
-                return (True)
-        else:
-                return(False)
+        return (x10 == x10t)
     except:
         return(False)
 
