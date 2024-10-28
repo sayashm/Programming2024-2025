@@ -118,7 +118,7 @@ def issolution(solution, puzzle):
     >>> issolution('BONE-SEPIA-BROWN', 'ODI-VAR-BEP-SNW')
     False
     '''
-    return(iscrossing(solution, puzzle) and isconsecutive(solution) and iscomplete(solution , puzzle))
+    return iscrossing(solution, puzzle) and isconsecutive(solution) and iscomplete(solution , puzzle)
 
 if __name__ == '__main__':
     import doctest
