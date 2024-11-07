@@ -25,12 +25,6 @@ s1 , s2 = s[:hl] , s[hl:]
 lnum = len(s1[0])
 
 for digit in range(lnum):
-    # st11 = ''
-    # for num in s1:
-    #     st11 += f'{num[:digit+1]:<{lnum+1}s}+ '
-    # st21  = ''
-    # for num in s2:
-    #     st21 += f'{num[:digit+1]:<{lnum+1}s}+ '
     left = ' + '.join([f'{num[:digit+1]:<{lnum}}' for num in s1])
     right = ' + '.join([f'{num[:digit+1]:<{lnum}}' for num in s2])
 
@@ -39,12 +33,7 @@ for digit in range(lnum):
 
 
 for digit in range(lnum-1):
-    # st12 = ''
-    # for num in s1:
-    #     st12 += f'{num[digit+1:lnum]:>{lnum}s} + '
-    # st22 = ''
-    # for num in s2:
-    #     st22 += f'{num[digit+1:lnum]:>{lnum}s} + '
+
     left = ' + '.join([f'{num[digit+1:]:>{lnum}}' for num in s1])
     right = ' + '.join([f'{num[digit+1:]:>{lnum}}' for num in s2])
 
