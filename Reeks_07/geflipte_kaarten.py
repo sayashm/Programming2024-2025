@@ -1,5 +1,5 @@
 # https://dodona.be/nl/courses/4157/series/46296/activities/165334097
-import random
+
 
 cards = [(5, 9), (6, 10), (2, 7), (1, 8), (4, 3)]
 
@@ -84,8 +84,11 @@ def generate_cards(n:int)->list:
     >>> generate_cards(5)   # doctest: +SKIP
     [(2, 3), (4, 1), (7, 8), (9, 10), (6, 5)]
     '''
+
+    from random import shuffle
+
     l = list(range(1, 2*n+1))
-    random.shuffle(l)
+    shuffle(l)
 
     return [(l[(2 * i - 1)-1], l[(2 * i)-1]) for i in range(1, n+1)]
 
