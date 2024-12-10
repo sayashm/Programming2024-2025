@@ -1,4 +1,5 @@
 # https://dodona.be/nl/courses/4157/series/46298/activities/286850454
+from string import punctuation
 
 def reverse(sentence:str):
     '''
@@ -13,7 +14,7 @@ def reverse(sentence:str):
     >>> reverse('To give them fits in Dixie, oh!')
     'Ho eixi dnis tifm eh Tevig, ot!'
     '''
-    from string import punctuation
+
     punc = punctuation+' '
 
     res = [None] * len(sentence)
@@ -50,8 +51,8 @@ def codec(location:str, saveto:str = None):
     >>> codec('ciphertext.txt', 'plaintext2.txt')
     '''
 
-    reader = open(location, 'r')
-    lines = reader.readlines()
+    with open(location, 'r', encoding='utf-8') as reader:
+        lines = reader.readlines()
     text = [reverse(line.rstrip()) for line in lines]
 
     if saveto is None:
