@@ -1,6 +1,5 @@
 # https://dodona.be/nl/courses/4157/series/46296/activities/387454511
 
-
 def isISBN13(code: str):
     if not isinstance(code, str) or len(code) != 13:
         return False
