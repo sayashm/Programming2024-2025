@@ -2,39 +2,39 @@
 
 
 def divide(compilation:str)->tuple:
-    first = ''
 
     if compilation[0].isupper():
-        for ch in compilation:
-            if ch.isupper():
-                first = first+ch
-    else:
-        for ch in compilation:
-            if ch.islower():
-                first = first+ch
+        first_part = ''.join(ch for ch in compilation if ch.isupper())
 
-    return (first, compilation.replace(first, ''))
+    else:
+        first_part = ''.join(ch for ch in compilation if ch.islower())
+
+    second_part = compilation.replace(first_part, '')
+
+    return first_part, second_part
 
 
 
 def recombine(sequence:list|tuple)->list:
-    devided =[divide(word) for word in sequence]
-    return [devided[i%len(devided)][1]+devided[(i+1)%len(devided)][0] for i in range(len(devided))]
+    divided =[divide(word) for word in sequence]
+    length = len(divided)
+    return [divided[i%length][1]+divided[(i+1)%length][0] for i in range(length)]
 
 def successors(compilation:str, sequence:list|tuple)->list:
     divided_com = divide(compilation)
     devided_seq = [divide(word) for word in sequence]
 
-    return [''.join(word) for word in devided_seq if divided_com[1].lower() == word[0].lower()]
+    return [first+second for first, second in devided_seq if divided_com[1].lower() == first.lower()]
 
 def intertwine(sequence:list|tuple)->tuple:
-
-    sequence = list(sequence)
-    sequence.sort(key=str.lower)
+    sequence = sorted(sequence, key = str.lower)
 
     l = int(len(sequence))
     if l%2 != 0 :
         raise AssertionError('invalid sequence')
+
+
+
     first_suc = successors(sequence[0], sequence)
     if len(first_suc)>1:
         raise AssertionError('invalid sequence')
